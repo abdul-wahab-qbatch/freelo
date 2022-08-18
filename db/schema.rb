@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_15_123854) do
+ActiveRecord::Schema.define(version: 2022_08_16_102556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,40 @@ ActiveRecord::Schema.define(version: 2022_08_15_123854) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "availability_hours", force: :cascade do |t|
+    t.string "start_time"
+    t.string "end_time"
+    t.integer "day"
+    t.bigint "seller_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["seller_id"], name: "index_availability_hours_on_seller_id"
+  end
+
+  create_table "buyers", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_buyers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
+  end
+
+  create_table "seller_skills", force: :cascade do |t|
+    t.integer "rate"
+    t.bigint "seller_id", null: false
+    t.bigint "skill_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["seller_id"], name: "index_seller_skills_on_seller_id"
+    t.index ["skill_id"], name: "index_seller_skills_on_skill_id"
   end
 
   create_table "sellers", force: :cascade do |t|
@@ -46,4 +80,15 @@ ActiveRecord::Schema.define(version: 2022_08_15_123854) do
     t.index ["reset_password_token"], name: "index_sellers_on_reset_password_token", unique: true
   end
 
+  create_table "skills", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.float "expertise_level"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "availability_hours", "sellers"
+  add_foreign_key "seller_skills", "sellers"
+  add_foreign_key "seller_skills", "skills"
 end
