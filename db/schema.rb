@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_16_102556) do
+ActiveRecord::Schema.define(version: 2022_08_18_131000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,25 @@ ActiveRecord::Schema.define(version: 2022_08_16_102556) do
     t.index ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
   end
 
+  create_table "jobs", force: :cascade do |t|
+    t.integer "status"
+    t.bigint "seller_id", null: false
+    t.bigint "buyer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["buyer_id"], name: "index_jobs_on_buyer_id"
+    t.index ["seller_id"], name: "index_jobs_on_seller_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "description"
+    t.bigint "job_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_id"], name: "index_reviews_on_job_id"
+  end
+
   create_table "seller_skills", force: :cascade do |t|
     t.integer "rate"
     t.bigint "seller_id", null: false
@@ -89,6 +108,9 @@ ActiveRecord::Schema.define(version: 2022_08_16_102556) do
   end
 
   add_foreign_key "availability_hours", "sellers"
+  add_foreign_key "jobs", "buyers"
+  add_foreign_key "jobs", "sellers"
+  add_foreign_key "reviews", "jobs"
   add_foreign_key "seller_skills", "sellers"
   add_foreign_key "seller_skills", "skills"
 end

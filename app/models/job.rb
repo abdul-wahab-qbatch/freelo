@@ -1,25 +1,26 @@
 # == Schema Information
 #
-# Table name: seller_skills
+# Table name: jobs
 #
 #  id         :bigint           not null, primary key
-#  rate       :integer
+#  status     :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  buyer_id   :bigint           not null
 #  seller_id  :bigint           not null
-#  skill_id   :bigint           not null
 #
 # Indexes
 #
-#  index_seller_skills_on_seller_id  (seller_id)
-#  index_seller_skills_on_skill_id   (skill_id)
+#  index_jobs_on_buyer_id   (buyer_id)
+#  index_jobs_on_seller_id  (seller_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...  (buyer_id => buyers.id)
 #  fk_rails_...  (seller_id => sellers.id)
-#  fk_rails_...  (skill_id => skills.id)
 #
-class SellerSkill < ApplicationRecord
+class Job < ApplicationRecord
   belongs_to :seller
-  belongs_to :skill
+  belongs_to :buyer
+  has_many :reviews
 end

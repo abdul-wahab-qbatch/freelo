@@ -1,32 +1,31 @@
 # == Schema Information
 #
-# Table name: availability_hours
+# Table name: jobs
 #
 #  id         :bigint           not null, primary key
-#  day        :integer
-#  end_time   :string
-#  start_time :string
+#  status     :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  buyer_id   :bigint           not null
 #  seller_id  :bigint           not null
 #
 # Indexes
 #
-#  index_availability_hours_on_seller_id  (seller_id)
+#  index_jobs_on_buyer_id   (buyer_id)
+#  index_jobs_on_seller_id  (seller_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...  (buyer_id => buyers.id)
 #  fk_rails_...  (seller_id => sellers.id)
 #
 
 one:
-  start_time: MyString
-  end_time: MyString
-  day: 1
+  status: 1
   seller: one
+  buyer: one
 
 two:
-  start_time: MyString
-  end_time: MyString
-  day: 1
+  status: 1
   seller: two
+  buyer: two
