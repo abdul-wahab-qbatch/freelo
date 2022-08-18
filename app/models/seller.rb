@@ -31,4 +31,5 @@ class Seller < ApplicationRecord
   has_many :skills, through: :seller_skills
   has_many :jobs
   has_many :buyers, through: :jobs
+  include Viewable
 end

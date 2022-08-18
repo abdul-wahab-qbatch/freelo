@@ -25,4 +25,5 @@ class Buyer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :jobs
   has_many :sellers, through: :jobs
+  include Viewable
 end
