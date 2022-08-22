@@ -24,4 +24,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def seller?
+    type == 'seller'
+  end
+
+  def buyer?
+    type == 'buyer'
+  end
 end

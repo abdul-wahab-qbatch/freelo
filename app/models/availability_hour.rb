@@ -16,7 +16,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (seller_id => sellers.id)
+#  fk_rails_...  (seller_id => users.id)
 #
 class AvailabilityHour < ApplicationRecord
   belongs_to :seller

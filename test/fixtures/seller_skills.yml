@@ -16,7 +16,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (seller_id => sellers.id)
+#  fk_rails_...  (seller_id => users.id)
 #  fk_rails_...  (skill_id => skills.id)
 #
 

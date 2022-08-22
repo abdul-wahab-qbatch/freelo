@@ -15,7 +15,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (buyer_id => buyers.id)
+#  fk_rails_...  (buyer_id => users.id)
 #
 class BuyerRequest < ApplicationRecord
   belongs_to :buyer, -> { where type: 'buyer' }

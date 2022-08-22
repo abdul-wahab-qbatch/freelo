@@ -2,12 +2,11 @@
 #
 # Table name: skills
 #
-#  id              :bigint           not null, primary key
-#  description     :string
-#  expertise_level :float
-#  title           :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id          :bigint           not null, primary key
+#  description :string
+#  title       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 one:
