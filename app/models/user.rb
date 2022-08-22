@@ -26,10 +26,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def seller?
-    type == 'seller'
+    type == 'Seller'
   end
 
   def buyer?
-    type == 'buyer'
+    type == 'Buyer'
   end
 end

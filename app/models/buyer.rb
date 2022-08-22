@@ -20,7 +20,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class Buyer < User
-  self.primary_key = 'users.id'
+  # self.primary_key = 'users.id'
   has_many :jobs
   has_many :sellers, through: :jobs
   has_many :buyer_requests

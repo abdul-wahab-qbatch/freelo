@@ -6,15 +6,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
-    <%= stylesheet_link_tag  params[:controller], media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag  params[:controller], 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag  'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag asset_path('/home/favicon.ico') %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="content">
+      <%=render 'layouts/messages'%>
+      <%= yield %>
+   </div>  
   </body>
 </html>

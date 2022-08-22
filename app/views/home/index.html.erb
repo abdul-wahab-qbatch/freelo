@@ -9,7 +9,11 @@
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Sign in</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Register</a></li>
+                        <li class="nav-item">
+                        <%# <a class="nav-link" href="#contact">Register</a> %>
+                          <%= link_to 'Register', new_user_registration_path, class: 'nav-link'%>
+                        </li>
+              
                     </ul>
                 </div>
             </div>
@@ -146,8 +150,7 @@
             <div class="container px-4 px-lg-5 text-center">
                 <h2 class="mb-4">Sign in your account</h2>
                 <%# <a class="btn btn-light btn-xl" href="https://startbootstrap.com/theme/creative/">Seller</a> &nbsp; %>
-                <%= link_to "Seller", new_seller_session_path, class: 'btn btn-light btn-xl'%> &nbsp;
-                <%= link_to "Buyer", new_buyer_session_path, class: 'btn btn-light btn-xl'%>
+                <%= link_to "Sign in", new_user_session_path, class: 'btn btn-light btn-xl'%> &nbsp;
                 <%# <a class="btn btn-light btn-xl" href="https://startbootstrap.com/theme/creative/">Buyer</a> %>
             </div>
         </section>
