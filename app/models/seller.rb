@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id                     :bigint           not null, primary key
+#  id                     :bigint           not null
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string
@@ -20,4 +20,11 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class Seller < User
+  self.primary_key = 'users.id' 
+  has_many :availability_hours, -> { order(:day) }
+  has_many :seller_skills
+  has_many :skills, through: :seller_skills
+  has_many :jobs
+  has_many :buyers, through: :jobs
+  include Viewable
 end
