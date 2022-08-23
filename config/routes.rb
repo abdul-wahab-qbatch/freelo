@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   end
   namespace :sellers do
     resources :dashboard, only: [:index]
+    namespace :dashboard do 
+      resources :availability_hours
+    end
   end
+  
   get 'welcome/index'
   #devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

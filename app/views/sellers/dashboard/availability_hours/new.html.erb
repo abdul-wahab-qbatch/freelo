@@ -1,0 +1,7 @@
+<%= form_with model: @availability_hour, url: sellers_dashboard_availability_hours_path do |f| %>
+  <div>
+    <%= f.label :day %>
+    <%# <%= f.input :day, :as => :select, :collection => AvailabilityHour.days.keys.to_a%>
+    <%#= f.collection_select :day, AvailabilityHour.days.keys.to_a, :id, :days %>
+  </div>
+<% end %>
