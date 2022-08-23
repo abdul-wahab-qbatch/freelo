@@ -10,6 +10,8 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<%# <link rel="stylesheet" href="css/style.css"> %>
     <%= stylesheet_link_tag 'sellers/dashboard'%>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag  'application', 'data-turbolinks-track': 'reload' %>  
   </head>
   <body>
 		
@@ -28,9 +30,9 @@
       </div>
 		</div>
 
-    <script src="js/jquery.min.js"></script>
+    <%# <script src="js/jquery.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js"></script> %>
   </body>
 </html>
