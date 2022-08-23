@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: skills
+#
+#  id          :bigint           not null, primary key
+#  description :string
+#  title       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+one:
+  title: MyString
+  description: MyString
+  seller: one
+
+two:
+  title: MyString
+  description: MyString
+  seller: two
