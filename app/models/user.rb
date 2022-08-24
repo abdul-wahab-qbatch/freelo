@@ -6,6 +6,10 @@
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string
+#  image_content_type     :string
+#  image_file_name        :string
+#  image_file_size        :bigint
+#  image_updated_at       :datetime
 #  last_name              :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
@@ -24,7 +28,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  has_one_attached :image
+  
   def seller?
     type == 'Seller'
   end

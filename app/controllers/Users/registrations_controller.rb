@@ -1,28 +1,29 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
-
+   before_action :configure_sign_up_params, only: [:create]
+   before_action :configure_account_update_params, only: [:update]
+  layout :set_layout, only: [:edit, :update]
   # GET /resource/sign_up
   # def new
   #   super
   # end
 
   # POST /resource
-  def create
+  # def create
+  #   super
+  # end
+
+  # GET /resource/edit
+  def edit
     super
   end
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
-
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    byebug
+    super
+  end
 
   # DELETE /resource
   # def destroy
@@ -41,22 +42,38 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email, :password, :type])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:image, :first_name, :last_name, :email, :password, :current_password])
+  end
 
   #The path used after sign up.
   def after_sign_up_path_for(resource)
     root_path
   end
 
+  def after_update_path_for(resource)
+    if resource.seller?
+      sellers_dashboard_index_path(resource: resource)
+    elsif resource.buyer?
+      buyers_dashboard_index_path(resource: resource)
+    end
+  end
+
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  private
+  def set_layout
+    if current_user.seller?
+      'seller'
+    elsif current_user.buyer?
+      'buyer'
+    end
+  end
 end

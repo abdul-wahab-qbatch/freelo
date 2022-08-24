@@ -17,4 +17,6 @@ ActiveStorage.start()
 // require('seller/popper')
 // require('seller/bootstrap.min')
 // require('seller/main')
-console.log('Hello from application.js')
+// console.log('Hello from application.js')
+import "@fortawesome/fontawesome-free/css/all"
+
