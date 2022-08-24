@@ -32,4 +32,5 @@ class User < ApplicationRecord
   def buyer?
     type == 'Buyer'
   end
+  include Viewable
 end

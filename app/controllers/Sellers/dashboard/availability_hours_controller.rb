@@ -4,7 +4,7 @@ class Sellers::Dashboard::AvailabilityHoursController <Sellers::DashboardControl
   end
 
   def index
-    @availability_hours = @seller.availability_hours
+    @availability_hours = @seller.availability_hours.order(:day)
   end
 
   def create 

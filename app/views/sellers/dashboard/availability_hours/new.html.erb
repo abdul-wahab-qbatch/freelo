@@ -1,7 +1,26 @@
+<strong>Add new</strong>
+
 <%= form_with model: @availability_hour, url: sellers_dashboard_availability_hours_path do |f| %>
   <div>
-    <%= f.label :day %>
-    <%# <%= f.input :day, :as => :select, :collection => AvailabilityHour.days.keys.to_a%>
-    <%#= f.collection_select :day, AvailabilityHour.days.keys.to_a, :id, :days %>
+    <%= f.label :day %> <br>
+    <%= f.select :day, options_for_select(AvailabilityHour.days.map {|key, value| [key.titleize, AvailabilityHour.days.key(value)]}, @availability_hour.day) %>
   </div>
+
+  <br>
+  <div>
+    <%= f.label :start_time %> <br>
+    <%= f.time_field :start_time %>
+  </div>
+
+  <br>
+  <div>
+    <%= f.label :end_time %> <br>
+    <%= f.time_field :end_time %>
+  </div>
+  
+  <br>
+  <div>
+  <%= f.submit 'Add' %>
+  </div>
+
 <% end %>
