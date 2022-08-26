@@ -1,7 +1,7 @@
 <nav id="sidebar">
 				<div class="p-4 pt-5">
 		  		<%# <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a> %>
-					 <%= image_tag current_user.image.url(:medium), class: 'img logo rounded-circle mb-5' %> 
+					 <%= image_tag 'sellers/logo', class: 'img logo rounded-circle mb-5' %> 
 	        <ul class="list-unstyled components mb-5">
 	          <%# <li class="active">
 	            <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
@@ -19,6 +19,24 @@
 	          <%# </li> %>
 	          <li>
 								<%= link_to 'Availability hours', sellers_dashboard_availability_hours_path %>
+	          </li>
+						<li>
+								<%= link_to 'Services Offered', sellers_dashboard_availability_hours_path %>
+	          </li>
+						<li>
+								<%= link_to 'Completed Jobs', sellers_dashboard_availability_hours_path %>
+	          </li>
+						<li>
+								<%= link_to 'Current Jobs', sellers_dashboard_availability_hours_path %>
+	          </li>
+						<li>
+								<%= link_to 'Buyer Requests', sellers_dashboard_availability_hours_path %>
+	          </li>
+						<li>
+								<%= link_to 'Buyer Requests', sellers_dashboard_availability_hours_path %>
+	          </li>
+						<li>
+								<%= link_to 'Revenue', sellers_dashboard_availability_hours_path %>
 	          </li>
 	          <%# <li>
               <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
