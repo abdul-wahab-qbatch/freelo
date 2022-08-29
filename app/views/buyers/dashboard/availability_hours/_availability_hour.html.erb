@@ -1,0 +1,14 @@
+<tr>
+<th scope="row"><%= availability_hour.day.titleize%></th>
+  <td><%= availability_hour.start_time %></td>
+  <td><%= availability_hour.end_time %></td>
+  <td>
+    <%= link_to edit_sellers_dashboard_availability_hour_path(availability_hour) do %>
+      <i class="fa-solid fa-pen-to-square"></i>
+    <% end %> &nbsp;
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+     <%= link_to sellers_dashboard_availability_hour_path(availability_hour), method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <i class="fa-solid fa-trash-can"></i>
+    <% end %>
+  </td>
+</tr>

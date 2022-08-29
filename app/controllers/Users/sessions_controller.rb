@@ -2,7 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-
+  before_action :verify_user, only: [:destroy]
   # GET /resource/sign_in
   # def new
   #   super
@@ -26,10 +26,10 @@ class Users::SessionsController < Devise::SessionsController
     end
   end
 
-# def after_sign_out_path_for(resource)
-#   root_path
-#   #byebug
-# end
+def after_sign_out_path_for(resource)
+  root_path
+  #byebug
+end
 
   # protected
 
@@ -38,4 +38,7 @@ class Users::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
+  def verify_user
+    redirect_to new_user_session_path, notice: 'You have already signed out. Please sign in again.' and return unless user_signed_in?
+  end
 end

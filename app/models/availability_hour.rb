@@ -21,4 +21,6 @@
 class AvailabilityHour < ApplicationRecord
   belongs_to :seller
   enum day: [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
+
+  validates :start_time, :end_time, :day, presence: true
 end

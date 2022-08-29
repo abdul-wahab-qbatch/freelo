@@ -1,19 +1,6 @@
 <strong>Edit</strong>
 
 <%= form_with model: @availability_hour, url: sellers_dashboard_availability_hour_path(@availability_hour) do |f| %>
-
-  <% if @availability_hour.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@availability_hour.errors.count, "error") %> prohibited this from being saved:</h2>
-
-      <ul>
-        <% @availability_hour.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
   <div>
     <%= f.label :day %> <br>
     <%= f.select :day, options_for_select(AvailabilityHour.days.map {|key, value| [key.titleize, AvailabilityHour.days.key(value)]}, @availability_hour.day) %>

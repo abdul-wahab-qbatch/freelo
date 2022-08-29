@@ -1,5 +1,6 @@
 class Sellers::Dashboard::AvailabilityHoursController <Sellers::DashboardController
   before_action :set_availability_hour, only: [:edit, :show, :destroy, :update]
+
   def new
     @availability_hour = AvailabilityHour.new
   end
@@ -9,7 +10,8 @@ class Sellers::Dashboard::AvailabilityHoursController <Sellers::DashboardControl
   end
 
   def create 
-    if @seller.availability_hours.create(availability_hour_params)
+    @availability_hour = @seller.availability_hours.build(availability_hour_params) 
+    if @availability_hour.save
       redirect_to sellers_dashboard_availability_hours_path
     else 
       render :new, status: :unprocessable_entity
@@ -43,6 +45,5 @@ class Sellers::Dashboard::AvailabilityHoursController <Sellers::DashboardControl
   def set_availability_hour
     @availability_hour = AvailabilityHour.find(params[:id])
   end
-
    
 end
